@@ -1,0 +1,96 @@
+Software Requirements Specification (SRS) for Quiz Website
+
+1. Introduction
+
+1.1 Purpose
+The purpose of this document is to outline the requirements for developing a Quiz Website in PHP. This website aims to provide users with a platform to participate in quizzes on various topics, view their scores, and compare them with other users.
+
+1.2 Scope
+The Quiz Website will allow registered users to:
+
+    - Browse and participate in quizzes.
+    - Track their quiz history and scores.
+    - View leaderboard to compare their scores with other users.
+    - Administer quizzes (for admins).
+    - Manage user accounts and quiz content (for admins).
+
+2. Functional Requirements
+
+2.1 User Registration and Authentication
+
+    - Users must be able to register for an account.
+    - Users must be able to log in using their credentials.
+    - Users should be able to reset their password if forgotten.
+    - Users must be able to log out securely.
+
+2.2 Quiz Management
+
+    - Admins should be able to create quizzes.
+    - Admins should be able to edit existing quizzes.
+    - Admins should be able to delete quizzes.
+    - Admins should be able to set the number of questions, time limit, and difficulty level for each quiz.
+
+2.3 Quiz Participation
+
+    - Users should be able to browse available quizzes.
+    - Users should be able to select a quiz to participate in.
+    - Users should be presented with a series of questions during the quiz.
+    - Users should be able to select their answers from multiple-choice options.
+    - Users should be informed of correct answers after submitting their responses.
+    - Users should be able to proceed to the next question.
+    - Users should be able to skip questions.
+    - Users should be able to see their score at the end of the quiz.
+
+2.4 Score Tracking and Leaderboard
+
+    - User scores should be recorded and associated with their accounts.
+    - Users should be able to view their own quiz history and scores.
+    - Users should be able to view a leaderboard displaying the highest scores achieved by other users.
+
+2.5 Admin Panel
+
+    - Admins should have access to an admin panel.
+    - Admins should be able to manage user accounts (create, edit, delete).
+    - Admins should be able to view and manage quizzes (create, edit, delete).
+    - Admins should be able to view statistics such as user activity and quiz popularity.
+
+3. Non-functional Requirements
+
+3.1 Performance
+
+    - The website should load quickly to ensure a smooth user experience.
+    - The system should be able to handle multiple concurrent users without significant performance degradation.
+
+3.2 Security
+
+    - User passwords should be securely stored using encryption techniques.
+    - The website should be protected against common web security threats such as SQL injection and cross-site scripting (XSS).
+    - Access to sensitive admin functionalities should be restricted to authorized users.
+
+3.3 Usability
+
+    - The website should have an intuitive user interface that is easy to navigate.
+    - Quizzes should be presented in a visually appealing and user-friendly manner.
+    - Error messages should be clear and helpful to users.
+
+4. System Architecture
+
+The Quiz Website will be developed using the following technologies:
+
+    - PHP for server-side scripting.
+    - MySQL for database management.
+    - HTML/CSS for front-end design.
+    - JavaScript for client-side interactivity.
+
+5. Glossary
+
+    - Admin: A user with administrative privileges, responsible for managing quizzes and user accounts.
+    - Quiz: A set of questions presented to users for assessment.
+    - User: A registered member of the website who can participate in quizzes and view scores.
+
+6. Conclusion
+
+This Software Requirements Specification outlines the functional and non-functional
+ requirements for developing a Quiz Website in PHP. Adhering to these requirements will ensure
+ the successful implementation of the website, providing users with an engaging platform
+ for participating in quizzes.
