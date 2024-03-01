@@ -1,0 +1,40 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* Styles for form card */
+.card {
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+/* Styles for form input fields */
+.form-control {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styles for form submit button */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Styles for form submit button on hover */
+.btn-primary:hover {
+    background-color: #0056b3;
+}

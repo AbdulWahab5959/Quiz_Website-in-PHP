@@ -285,8 +285,10 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-hero .btn {
   font-size: 24px;
 }
-#fh5co-hero .btn.btn-primary {
+#fh5co-hero .btn .btn-primary {
+  width: 50%;
   padding: 14px 30px !important;
+  border-radius: 5px;
 }
 #fh5co-hero .flexslider {
   border: none;
