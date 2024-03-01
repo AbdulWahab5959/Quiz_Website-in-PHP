@@ -1,3 +1,4 @@
+<?php include_once('includes/db_connect.php') ?>
 <!DOCTYPE HTML>
 <html>
 	<head>

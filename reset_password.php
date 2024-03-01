@@ -5,7 +5,8 @@ if (isset($_POST['reset'])) {
     $newPassword = $_POST['password'];
     $cPassword = $_POST['cpassword'];
     if ($newPassword == $cPassword) {
-            $sql1 = "UPDATE `users` SET `password` = '$newPassword' WHERE token='$token'";
+        $hashed_password = password_hash($newpassword, PASSWORD_DEFAULT);
+            $sql1 = "UPDATE `users` SET `password` = '$hashed_password' WHERE token='$token'";
             if ($conn->query($sql1) === TRUE) {
                 echo "<script>alert('Password updated successfully!')</script>";
                 echo "<script>window.location.href = 'login.php';</script>";

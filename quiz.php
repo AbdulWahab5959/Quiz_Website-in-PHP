@@ -1,3 +1,5 @@
+<?php include_once('includes/logincheck.php'); ?>
+
 <!DOCTYPE HTML>
 <head>
 	<?php include_once('includes/header.php') ?>

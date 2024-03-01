@@ -20,6 +20,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['role'] = $row['role'];
+                $_SESSION['login'] = true;
 
                 // Redirect to dashboard or any other page
                 header("location: index.php");
