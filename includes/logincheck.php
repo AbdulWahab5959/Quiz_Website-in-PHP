@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 // Check if the user is not logged in and tries to access any page other than the login page or registration page
 if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
     if (basename($_SERVER['PHP_SELF']) !== 'login.php' && basename($_SERVER['PHP_SELF']) !== 'registration.php') {
@@ -16,4 +16,4 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
         exit;
     }
 }
-?> -->
+?>

@@ -14,7 +14,7 @@
 
     table {
         border-collapse: collapse;
-        width: 50%;
+        width: 60%;
         margin: auto;
         margin-bottom: 2.5rem;
     }

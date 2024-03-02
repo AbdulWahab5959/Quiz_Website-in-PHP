@@ -1,5 +1,7 @@
 <?php
 require_once('includes/db_connect.php');
+require_once('includes/logincheck.php');
+
 $token = $_SESSION['token'];
 if (isset($_POST['reset'])) {
     $newPassword = $_POST['password'];

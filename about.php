@@ -1,4 +1,5 @@
-<?php include_once('includes/logincheck.php'); ?>
+<?php include_once('includes/db_connect.php') ?>
+<?php include_once('includes/logincheck.php') ?>
 <!DOCTYPE HTML>
 <html>
 <head>

@@ -1,4 +1,6 @@
 <?php include_once('includes/db_connect.php') ?>
+<?php include_once('includes/logincheck.php') ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -19,7 +21,7 @@
 			   				<div class="slider-text-inner">
 			   					<h1>Level up your skills: Take the code quiz!</h1>
 									<h2>Brought to you by <a href="#" target="_blank">Pak_Quiz.com</a></h2>
-									<p><a class="btn btn-primary " href="#">Start Quiz Now!</a></p>
+									<p><a class="btn btn-primary" href="#">Start Quiz Now!</a></p>
 			   				</div>
 			   			</div>
 			   		</div>

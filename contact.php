@@ -1,4 +1,5 @@
-<?php include_once('includes/logincheck.php'); ?>
+<?php include_once('includes/db_connect.php') ?>
+<?php include_once('includes/logincheck.php') ?>
 
 <!DOCTYPE HTML>
 <html>
@@ -19,7 +20,7 @@
 			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
 			   				<div class="slider-text-inner">
 			   					<h1 class="heading-section">Contact us</h1>
-									<h2>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
+									<h2>This Quiz_Website Made by <a href="#" target="_blank">Pak_Quiz.com</a></h2>
 			   				</div>
 			   			</div>
 			   		</div>
@@ -37,10 +38,10 @@
 					<div class="fh5co-contact-info">
 						<h3>Contact Information</h3>
 						<ul>
-							<li class="address">198 West 21th Street, <br> Suite 721 New York NY 10016</li>
-							<li class="phone"><a href="tel://1234567920">+ 1235 2355 98</a></li>
-							<li class="email"><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-							<li class="url"><a href="http://freehtml5.co">freeHTML5.co</a></li>
+							<li class="address">Mianwali,Punjab <br> Pakistan</li>
+							<li class="phone"><a href="tel://1234567920">+ 92 307 715 4686</a></li>
+							<li class="email"><a href="mailto:abdulwahabk620@gmail.com">abdulwahabk620@gmail.com</a></li>
+					
 						</ul>
 					</div>
 
@@ -88,15 +89,14 @@
 			</div>
 			
 		</div>
-	</div>
-	<div id="map" class="fh5co-map"></div>
+</div>
 
 	<div id="fh5co-register" style="background-image: url(images/img_bg_2.jpg);">
 		<div class="overlay"></div>
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2 animate-box">
 				<div class="date-counter text-center">
-					<h2>Get 400 of Online Courses for Free</h2>
+					<h2>Get 100 of Online Quiz for Free</h2>
 					<h3>By Mike Smith</h3>
 					<div class="simply-countdown simply-countdown-one"></div>
 					<p><strong>Limited Offer, Hurry Up!</strong></p>
