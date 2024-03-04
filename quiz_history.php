@@ -4,11 +4,13 @@
 
 <!DOCTYPE HTML>
 <html>
+
 <head>
 	<?php include_once('includes/header.php') ?>
 </head>
+
 <body>
-		<?php include_once('includes/navbar.php') ?>
+	<?php include_once('includes/navbar.php') ?>
 
 
 	<div id="fh5co-pricing" class="fh5co-bg-section">
@@ -16,8 +18,9 @@
 			<div class="row animate-box">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
 					<h2>User Quiz History</h2>
-				<p>
-The user quiz history feature provides a comprehensive overview of the quizzes a user has attempted, offering valuable insights into their learning journey. By accessing their quiz history, users can track their progress, review past performance, and identify areas for improvement. </p>	
+					<p>
+						The user quiz history feature provides a comprehensive overview of the quizzes a user has attempted, offering valuable insights into their learning journey. By accessing their quiz history, users can track their progress, review past performance, and identify areas for improvement.
+					</p>
 				</div>
 			</div>
 			<div class="row">
@@ -25,78 +28,74 @@ The user quiz history feature provides a comprehensive overview of the quizzes a
 					<div class="col-md-6 animate-box">
 						<div class="pricing__item">
 							<div class="wrap-price">
-								<!-- <div class="icon icon-store"></div> -->
-	                     <h3 class="pricing__title">User Score</h3>
-	                     <!-- <p class="pricing__sentence">Up to 5 users</p> -->
+								<h3 class="pricing__title">User Score</h3>
 							</div>
-                     <div class="pricing__price">
-                        <span class="pricing__anim pricing__anim--1">
-								<span class="pricing__currency">$</span>79
-                        </span>
-                        <span class="pricing__anim pricing__anim--2">
-								<span class="pricing__period">per year</span>
-                        </span>
-                     </div>
-                     <div class="wrap-price">
-                     	<ul class="pricing__feature-list">
-	                        <li class="pricing__feature">One Year Standard Access</li>
-	                        <li class="pricing__feature">Limited Courses</li>
-	                        <li class="pricing__feature">300+ Lessons</li>
-	                        <li class="pricing__feature">Random Supporter</li>
-	                        <li class="pricing__feature">View Only Ebook</li>
-	                        <li class="pricing__feature">Standard Tutorials</li>
-	                         <li class="pricing__feature">Unlimited Registered User</li>
-	                     </ul>
-                     </div>
-                 </div>
-					</div>
-					<div class="col-md-6 animate-box">
-                  <div class="pricing__item">
-                  	<div class="wrap-price">
-                  		<!-- <div class="icon icon-home2"></div> -->
-	                     <h3 class="pricing__title"> All-Time Highest Scores</h3>
-	                     <!-- <p class="pricing__sentence">Unlimited users</p> -->
+							<div class="wrap-price">
+								<span class="pricing__anim pricing__anim--1">
+									<b>	Score</b>  | <b>Email </b> | <b>Date</b>
+							</span>
 							</div>
-                     <div class="pricing__price">
-                        <span class="pricing__anim pricing__anim--1">
-								<span class="pricing__currency">$</span>499
-                        </span>
-                        <span class="pricing__anim pricing__anim--2">
-								<span class="pricing__period">per year</span>
-                        </span>
-                     </div>
-                     <div class="wrap-price">
-                     	<ul class="pricing__feature-list">
-	                        <li class="pricing__feature">Life Time Access</li>
-	                        <li class="pricing__feature">Unlimited All Courses</li>
-	                        <li class="pricing__feature">7000+ Lessons &amp; Growing</li>
-	                        <li class="pricing__feature">Free Supporter</li>
-	                        <li class="pricing__feature">Free Ebook Downloads</li>
-	                        <li class="pricing__feature">Premium Tutorials</li>
-	                         <li class="pricing__feature">Unlimited Registered User</li>
-	                     </ul>
-	                     </div>
-                  </div>
-               </div>
-            </div>
-			</div>
-		</div>
-	</div>
+							<?php
+							// Fetch user's personal record
+							$query_personal_record = "SELECT email, score, `date` FROM users_quiz WHERE email = ? ORDER BY score DESC LIMIT 10";
+							$stmt_personal_record = mysqli_prepare($conn, $query_personal_record);
+							mysqli_stmt_bind_param($stmt_personal_record, "s", $_SESSION['email']);
+							mysqli_stmt_execute($stmt_personal_record);
+							$result_personal_record = mysqli_stmt_get_result($stmt_personal_record);
 
-	<div id="fh5co-register" style="background-image: url(images/img_bg_2.jpg);">
-		<div class="overlay"></div>
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 animate-box">
-				<div class="date-counter text-center">
-					<h2>Get 400 of Online Courses for Free</h2>
-					<h3>By Mike Smith</h3>
-					<div class="simply-countdown simply-countdown-one"></div>
-					<p><strong>Limited Offer, Hurry Up!</strong></p>
-					<p><a href="#" class="btn btn-primary btn-lg btn-reg">Register Now!</a></p>
+							// Display user's personal record
+							while ($row_personal_record = mysqli_fetch_assoc($result_personal_record)) {
+							?>
+								<div class="wrap-price">
+									<span class="pricing__anim pricing__anim--1">
+									<b>	<?php echo $row_personal_record['score']; ?></b> | <b><?php echo $row_personal_record['email']; ?> </b> | <b><?php echo $row_personal_record['date']; ?></b>
+									</span>
+								</div>
+							<?php
+							}
+							?>
+						</div>
+					</div>
+
+					<div class="col-md-6 animate-box">
+						<div class="pricing__item">
+							<div class="wrap-price">
+								<h3 class="pricing__title">All-Time Highest Scores</h3>
+							</div>
+							<div class="wrap-price">
+								<span class="pricing__anim pricing__anim--1">
+									<b>	Score</b>  | <b>Email </b> | <b>Date</b>
+							</span>
+							</div>
+							<?php
+							// Fetch top 10 records excluding user's personal record
+							$query_top_records = "SELECT email, score, `date` FROM users_quiz WHERE email != ? ORDER BY score DESC LIMIT 10";
+							$stmt_top_records = mysqli_prepare($conn, $query_top_records);
+							mysqli_stmt_bind_param($stmt_top_records, "s", $_SESSION['email']);
+							mysqli_stmt_execute($stmt_top_records);
+							$result_top_records = mysqli_stmt_get_result($stmt_top_records);
+
+							// Display top 10 records
+							while ($row_top_records = mysqli_fetch_assoc($result_top_records)) {
+							?>
+								<div class="wrap-price">
+									<span class="pricing__anim pricing__anim--1">
+										<?php echo $row_top_records['score']; ?> | <?php echo $row_top_records['email']; ?> | <?php echo $row_top_records['date']; ?>
+									</span>
+								</div>
+							<?php
+							}
+							?>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
+	</div>
+
+
 
 	<?php include_once('includes/footer.php') ?>
 	</div>
@@ -124,24 +123,6 @@ The user quiz history feature provides a comprehensive overview of the quizzes a
 	<script src="js/simplyCountdown.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-	<script>
-    var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+</body>
 
-    // default example
-    simplyCountdown('.simply-countdown-one', {
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate()
-    });
-
-    //jQuery example
-    $('#simply-countdown-losange').simplyCountdown({
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate(),
-        enableUtc: false
-    });
-	</script>
-	</body>
 </html>
-

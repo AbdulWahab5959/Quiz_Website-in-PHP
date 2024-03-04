@@ -27,9 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Answer'])) {
     }
     
 
-} else {
-    echo "Form not submitted.";
-}
+} 
 ?>
 <!DOCTYPE HTML>
 
@@ -80,7 +78,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Answer'])) {
         </div>
     </div>
 </div>
+<?php
+$user_id=$_SESSION['user_id'];
+$email = $_SESSION['email'];
+$dateTaken = date("Y-m-d"); // Current date in YYYY-MM-DD format
+$quiz_result = "INSERT INTO users_quiz ( email, quiz_name, score, `date`) 
+VALUES ( '$email', '$Title', '$score', '$dateTaken')";
 
+if (mysqli_query($conn, $quiz_result)) {
+    echo "result inserted for user" ;
+}
+else{
+    echo "Error: " . $quiz_result . "<br>" . $conn->error;
+}
+?>
 
     
     
