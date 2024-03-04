@@ -58,36 +58,36 @@
 					</div>
 
 					<div class="col-md-6 animate-box">
-						<div class="pricing__item">
-							<div class="wrap-price">
-								<h3 class="pricing__title">All-Time Highest Scores</h3>
-							</div>
-							<div class="wrap-price">
-								<span class="pricing__anim pricing__anim--1">
-									<b>	Score</b>  | <b>Email </b> | <b>Date</b>
-							</span>
-							</div>
-							<?php
-							// Fetch top 10 records excluding user's personal record
-							$query_top_records = "SELECT email, score, `date` FROM users_quiz WHERE email != ? ORDER BY score DESC LIMIT 10";
-							$stmt_top_records = mysqli_prepare($conn, $query_top_records);
-							mysqli_stmt_bind_param($stmt_top_records, "s", $_SESSION['email']);
-							mysqli_stmt_execute($stmt_top_records);
-							$result_top_records = mysqli_stmt_get_result($stmt_top_records);
+    <div class="pricing__item">
+        <div class="wrap-price">
+            <h3 class="pricing__title">All-Time Highest Scores</h3>
+        </div>
+        <div class="wrap-price">
+            <span class="pricing__anim pricing__anim--1">
+                <b>Score</b> | <b>Email</b> | <b>Date</b>
+            </span>
+        </div>
+        <?php
+        // Fetch top 10 records including user's personal record
+        $query_top_records = "SELECT email, score, `date` FROM users_quiz ORDER BY score DESC LIMIT 10";
+        $stmt_top_records = mysqli_prepare($conn, $query_top_records);
+        mysqli_stmt_execute($stmt_top_records);
+        $result_top_records = mysqli_stmt_get_result($stmt_top_records);
 
-							// Display top 10 records
-							while ($row_top_records = mysqli_fetch_assoc($result_top_records)) {
-							?>
-								<div class="wrap-price">
-									<span class="pricing__anim pricing__anim--1">
-										<?php echo $row_top_records['score']; ?> | <?php echo $row_top_records['email']; ?> | <?php echo $row_top_records['date']; ?>
-									</span>
-								</div>
-							<?php
-							}
-							?>
-						</div>
-					</div>
+        // Display top 10 records
+        while ($row_top_records = mysqli_fetch_assoc($result_top_records)) {
+        ?>
+            <div class="wrap-price">
+                <span class="pricing__anim pricing__anim--1">
+                    <?php echo $row_top_records['score']; ?> | <?php echo $row_top_records['email']; ?> | <?php echo $row_top_records['date']; ?>
+                </span>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+</div>
+
 				</div>
 			</div>
 		</div>
