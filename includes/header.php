@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="css/form.css">
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- Sweet-Alert -->
-	<!-- SweetAlert CDN -->
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-	
+	<!-- toastify CDN -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<!-- Toastify JS -->
+	<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

@@ -64,4 +64,5 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Toastify JS -->
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
