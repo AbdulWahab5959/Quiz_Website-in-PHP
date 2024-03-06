@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2024 at 08:05 PM
+-- Generation Time: Mar 06, 2024 at 11:44 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -102,20 +102,6 @@ INSERT INTO `quizzes` (`QuizID`, `title`, `NumberOfQuestions`, `CreatedBy`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userquizzes`
---
-
-CREATE TABLE `userquizzes` (
-  `UserQuizID` int(20) NOT NULL,
-  `user_id` int(20) NOT NULL,
-  `QuizID` int(20) NOT NULL,
-  `Score` int(20) NOT NULL,
-  `DateTaken` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -134,7 +120,36 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `role`, `token`) VALUES
 (1, 'mahi', 'abdulwahabk620@gmail.com', '$2y$10$Q3a76f4Cs0SSL9mErBHwUe4nbqjUIMzKwV9wqmKyDE73x5RlKC0E.', 'admin', 'a048585059b8bb70a8ee1951003c336e'),
-(2, 'Usman Hassan ', 'usmanhassan16903@gmail.com', '$2y$10$Q3a76f4Cs0SSL9mErBHwUe4nbqjUIMzKwV9wqmKyDE73x5RlKC0E.', 'user', 'afc1ac6b4233ada4e5a6ac0b55cd5119');
+(2, 'Usman Hassan ', 'usmanhassan16903@gmail.com', '$2y$10$Q3a76f4Cs0SSL9mErBHwUe4nbqjUIMzKwV9wqmKyDE73x5RlKC0E.', 'user', 'afc1ac6b4233ada4e5a6ac0b55cd5119'),
+(4, 'Mursaleen', 'Abcd@gmail.com', '$2y$10$Q3a76f4Cs0SSL9mErBHwUe4nbqjUIMzKwV9wqmKyDE73x5RlKC0E.', 'user', ''),
+(5, 'Abrar', 'Abcdefgh@gmail.com', '$2y$10$Q3a76f4Cs0SSL9mErBHwUe4nbqjUIMzKwV9wqmKyDE73x5RlKC0E.', 'user', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_quiz`
+--
+
+CREATE TABLE `users_quiz` (
+  `id` int(11) NOT NULL,
+  `email` text NOT NULL,
+  `quiz_name` text NOT NULL,
+  `score` int(20) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users_quiz`
+--
+
+INSERT INTO `users_quiz` (`id`, `email`, `quiz_name`, `score`, `date`) VALUES
+(3, 'usmanhassan16903@gmail.com', 'HTML', 40, '2024-03-04'),
+(4, 'usmanhassan16903@gmail.com', 'HTML', 0, '2024-03-04'),
+(5, 'usmanhassan16903@gmail.com', 'HTML', 10, '2024-03-04'),
+(6, 'Abcd@gmail.com', 'HTML', 30, '2024-03-04'),
+(7, 'usmanhassan16903@gmail.com', 'HTML', 40, '2024-03-06'),
+(8, 'usmanhassan16903@gmail.com', 'HTML', 0, '2024-03-06'),
+(9, 'usmanhassan16903@gmail.com', 'HTML', 30, '2024-03-06');
 
 --
 -- Indexes for dumped tables
@@ -162,18 +177,16 @@ ALTER TABLE `quizzes`
   ADD KEY `fk_created_by` (`CreatedBy`);
 
 --
--- Indexes for table `userquizzes`
---
-ALTER TABLE `userquizzes`
-  ADD PRIMARY KEY (`UserQuizID`),
-  ADD KEY `fk_user_id` (`user_id`),
-  ADD KEY `fk_QuizID` (`QuizID`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `users_quiz`
+--
+ALTER TABLE `users_quiz`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -198,16 +211,16 @@ ALTER TABLE `quizzes`
   MODIFY `QuizID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `userquizzes`
---
-ALTER TABLE `userquizzes`
-  MODIFY `UserQuizID` int(20) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users_quiz`
+--
+ALTER TABLE `users_quiz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -230,14 +243,6 @@ ALTER TABLE `questions`
 --
 ALTER TABLE `quizzes`
   ADD CONSTRAINT `fk_created_by` FOREIGN KEY (`CreatedBy`) REFERENCES `users` (`user_id`);
-
---
--- Constraints for table `userquizzes`
---
-ALTER TABLE `userquizzes`
-  ADD CONSTRAINT `fk_QuizID` FOREIGN KEY (`QuizID`) REFERENCES `quizzes` (`QuizID`),
-  ADD CONSTRAINT `fk_UserQuizID` FOREIGN KEY (`UserQuizID`) REFERENCES `quizzes` (`QuizID`),
-  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

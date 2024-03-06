@@ -35,7 +35,7 @@ if (isset($_POST['register'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    $role = $_POST['role'];
+    $role = 'user';
 
     if (!empty($name) && !empty($email) && !empty($password) && !empty($cpassword) && !empty($role)) {
         if ($password === $cpassword) {
@@ -118,13 +118,7 @@ if (isset($_POST['register'])) {
                 <label for="password">Confirm Password:</label>
                 <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Enter your password">
             </div>
-            <div class="form-group">
-                <label for="role"  >Select Role:</label>
-                <select id="role" name="role" class="form-control">
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                </select>
-            </div>
+            
             <input type="submit" name="register" value="Register" class="btn btn-primary">
         </form>
     </div>

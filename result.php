@@ -86,7 +86,7 @@ $quiz_result = "INSERT INTO users_quiz ( email, quiz_name, score, `date`)
 VALUES ( '$email', '$Title', '$score', '$dateTaken')";
 
 if (mysqli_query($conn, $quiz_result)) {
-    echo "result inserted for user" ;
+
 }
 else{
     echo "Error: " . $quiz_result . "<br>" . $conn->error;
