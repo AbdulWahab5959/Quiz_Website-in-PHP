@@ -3,7 +3,7 @@ include('includes/db_connect.php');
 include_once('includes/logincheck.php');
 // Check if appointment ID is provided in URL
 if (isset($_GET['id'])) {
-    $users_id = $_GET['id'];
+    $quiz_id = $_GET['id'];
 
     // Prepare SQL statement to delete appointment
     $sql = "DELETE FROM quizzes WHERE QuizID = ?";
@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     // Check if prepare() succeeded
     if ($stmt) {
         // Bind appointment ID parameter
-        $stmt->bind_param("i", $users_id);
+        $stmt->bind_param("i", $quiz_id);
 
         // Execute SQL statement
         if ($stmt->execute()) {

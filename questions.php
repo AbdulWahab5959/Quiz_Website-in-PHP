@@ -33,11 +33,13 @@
 <body>
     <?php include_once('includes/navbar.php');
         if (isset($_GET['id'])) {
-        $quiz_id = $_GET['id'];}
+        $quiz_id = $_GET['id'];
+        $_SESSION['quiz_id']=$quiz_id;
+    }
         ?>
             <h3 class="text-center">Questions List</h3>
             <div class="text-center"> 
-                <a id="newQuizButton" class=" btn bg-success btn-success " href="new_question.php">Add New Questions</a>
+                <a id="newQuizButton" class=" btn bg-success btn-success " href="new_question.php?id=<?php echo $quiz_id; ?>">Add New Questions</a>
             </div>
             <table>
                         <thead>

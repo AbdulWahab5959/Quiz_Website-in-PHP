@@ -76,7 +76,7 @@
                                     }
                                 } else {
                                     // Display message if no appointments found
-                                    echo "<tr><td colspan='4'>No Question found.</td></tr>";
+                                    echo "<tr><td colspan='4'>No Options found.</td></tr>";
                                 }
                             }
                         }

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Option_Add'])) {
     if (mysqli_query($conn, $sql_insert_option)) {
         echo "<script>alert('Option added successfully.');</script>";
         
-        header("Location: options.php?id=".$questionID);
+        header("Location: option.php?id=".$questionID);
     } else {
         echo "Error inserting record: " . $conn->error;
     }
