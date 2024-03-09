@@ -2,9 +2,10 @@
 <html>
 <head>
     <?php include_once('includes/header.php') ?>
-  </head>
+</head>
 <body>
 <?php include_once('includes/navbar.php') ?>
+
 <?php
 require_once('includes/db_connect.php');
 include_once('includes/logincheck.php');
@@ -41,10 +42,10 @@ if (isset($_POST['register'])) {
                     echo "<script>
                             Toastify({
                                 text: 'Registered successfully',
-                                duration: 5000
+                                duration: 3000
                             }).showToast();
                             setTimeout(function() {
-                                window.location = 'login.php';
+                                window.location = 'user_administration.php';
                             }, 5000);
                             </script>";
                     exit;
@@ -79,7 +80,7 @@ if (isset($_POST['register'])) {
 
 <div class="form">
     <div class="card">
-        <h3 class="text-center">REGISTRATION FORM</h3>
+        <h3 class="text-center">REGISTRATION FORM FOR NEW USER'S</h3>
         <form action="" method="post">
             <div class="form-group">
                 <label for="name">Your Name:</label>

@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <?php include_once('includes/header.php') ?>
+    <?php include_once('includes/header.php') ;?>
 
 </head>
 <style>
@@ -14,7 +14,7 @@
 
     table {
         border-collapse: collapse;
-        width: 60%;
+        width: 80%;
         margin: auto;
         margin-bottom: 2.5rem;
     }
@@ -31,24 +31,28 @@
     }
 </style>
 <body>
-    <?php include_once('includes/navbar.php') ?>
-            <h3 class="text-center">Current Users</h3>
+    <?php include_once('includes/navbar.php');
+        if (isset($_GET['id'])) {
+        $quiz_id = $_GET['id'];}
+        ?>
+            <h3 class="text-center">Questions List</h3>
             <div class="text-center"> 
-                <a id="newQuizButton" class=" btn bg-success btn-success " href="new_users.php">Create New Users</a>
+                <a id="newQuizButton" class=" btn bg-success btn-success " href="new_question.php">Add New Questions</a>
             </div>
             <table>
                         <thead>
                             <tr>
-                                <th>user_id</th>
-                                <th>Email</th>
-                                <th>Name</th>
-                                <th>Role</th>
+                                <th>QuestionID</th>
+                                <th>QuestionText</th>
+                                <th>CorrectAnswer</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM users";
+                            if (isset($_GET['id'])) {
+                                $quiz_id = $_GET['id'];
+                            $sql ="SELECT * FROM `questions` where Quiz_ID='$quiz_id'";
                             $result = $conn->query($sql);
 
                             if (!$result) {
@@ -60,20 +64,19 @@
                                     // Display appointments
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='text-center' >";
-                                        echo "<td>" . $row['user_id'] . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['name'] . "</td>";
-                                        echo "<td>" . $row['role'] . "</td>";
-                                        echo "<td><a href= 'delete_user.php?id=" . $row['user_id'] . "' class='btn btn-danger p-2'>Delete</a> | <a href='update_user.php?id=" . $row['user_id'] . "' class='btn btn-info p-2'>Update</a></td>";
+                                        echo "<td>" . $row['QuestionID'] . "</td>";
+                                        echo "<td>" . $row['QuestionText'] . "</td>";
+                                        echo "<td>" . $row['CorrectAnswer'] . "</td>";
+                                        echo "<td><a href= 'delete_question.php?id=" . $row['QuestionID'] . "' class='btn btn-danger p-2'>Delete</a> | <a href='update_question.php?id=" . $row['QuestionID'] . "' class='btn btn-info p-2'>Update</a> <a href='option.php?id=" . $row['QuestionID'] . "' class='btn btn-success p-2'>Show Options</a></td>";
 
                                         echo "</tr>";
                                     }
                                 } else {
                                     // Display message if no appointments found
-                                    echo "<tr><td colspan='4'>No User found.</td></tr>";
+                                    echo "<tr><td colspan='5'>No Question found.</td></tr>";
                                 }
                             }
-
+                        }
                             ?>
                         </tbody>
                     </table>
@@ -102,9 +105,6 @@
     <!-- Magnific Popup -->
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/magnific-popup-options.js"></script>
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-    <script src="js/google_map.js"></script>
     <!-- Count Down -->
     <script src="js/simplyCountdown.js"></script>
     <!-- Main -->

@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
             // Verify password
             if (password_verify($password, $row['password'])) {
                 // Password is correct, set session variables or perform any other action you want
-                $_SESSION['user_id'] = $row['id']; // You might need to adjust this based on your database schema
+                $_SESSION['user_id'] = $row['user_id']; 
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['role'] = $row['role'];

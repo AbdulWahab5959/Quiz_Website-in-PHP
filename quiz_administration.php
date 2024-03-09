@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <?php include_once('includes/header.php') ?>
+    <?php include_once('includes/header.php') ;?>
 
 </head>
 <style>
@@ -32,23 +32,22 @@
 </style>
 <body>
     <?php include_once('includes/navbar.php') ?>
-            <h3 class="text-center">Current Users</h3>
+            <h3 class="text-center">Quiz List</h3>
             <div class="text-center"> 
-                <a id="newQuizButton" class=" btn bg-success btn-success " href="new_users.php">Create New Users</a>
+                <a id="newQuizButton" class=" btn bg-success btn-success " href="new_quiz.php">Create New Quiz</a>
             </div>
             <table>
                         <thead>
                             <tr>
-                                <th>user_id</th>
-                                <th>Email</th>
-                                <th>Name</th>
-                                <th>Role</th>
+                                <th>Quiz_id</th>
+                                <th>Title</th>
+                                <th>NumberOfQuestions</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM users";
+                            $sql = "SELECT * FROM quizzes";
                             $result = $conn->query($sql);
 
                             if (!$result) {
@@ -60,11 +59,10 @@
                                     // Display appointments
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='text-center' >";
-                                        echo "<td>" . $row['user_id'] . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['name'] . "</td>";
-                                        echo "<td>" . $row['role'] . "</td>";
-                                        echo "<td><a href= 'delete_user.php?id=" . $row['user_id'] . "' class='btn btn-danger p-2'>Delete</a> | <a href='update_user.php?id=" . $row['user_id'] . "' class='btn btn-info p-2'>Update</a></td>";
+                                        echo "<td>" . $row['QuizID'] . "</td>";
+                                        echo "<td>" . $row['title'] . "</td>";
+                                        echo "<td>" . $row['NumberOfQuestions'] . "</td>";
+                                        echo "<td><a href= 'delete_quiz.php?id=" . $row['QuizID'] . "' class='btn btn-danger p-2'>Delete</a> | <a href='update_quiz.php?id=" . $row['QuizID'] . "' class='btn btn-info p-2'>Update</a> <a href='questions.php?id=" . $row['QuizID'] . "' class='btn btn-success p-2'>Show Questions</a></td>";
 
                                         echo "</tr>";
                                     }
@@ -102,9 +100,6 @@
     <!-- Magnific Popup -->
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/magnific-popup-options.js"></script>
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-    <script src="js/google_map.js"></script>
     <!-- Count Down -->
     <script src="js/simplyCountdown.js"></script>
     <!-- Main -->

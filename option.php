@@ -1,10 +1,11 @@
+
 <?php include_once('includes/db_connect.php'); ?>
 <?php include_once('includes/logincheck.php'); ?>
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <?php include_once('includes/header.php') ?>
+    <?php include_once('includes/header.php') ;?>
 
 </head>
 <style>
@@ -14,7 +15,7 @@
 
     table {
         border-collapse: collapse;
-        width: 60%;
+        width: 80%;
         margin: auto;
         margin-bottom: 2.5rem;
     }
@@ -31,24 +32,30 @@
     }
 </style>
 <body>
-    <?php include_once('includes/navbar.php') ?>
-            <h3 class="text-center">Current Users</h3>
+    <?php include_once('includes/navbar.php');
+        if (isset($_GET['id'])) {
+        $option_id = $_GET['id'];}
+        ?>
+            <h3 class="text-center">Options List</h3>
             <div class="text-center"> 
-                <a id="newQuizButton" class=" btn bg-success btn-success " href="new_users.php">Create New Users</a>
-            </div>
+            <a id="newQuizButton" class="btn bg-success btn-success" href="new_option.php?id=<?php echo $option_id; ?>">Add New Options</a>
+
+                 </div>
             <table>
                         <thead>
                             <tr>
-                                <th>user_id</th>
-                                <th>Email</th>
-                                <th>Name</th>
-                                <th>Role</th>
+                                <th>OptionID</th>
+                                <th>QuestionID</th>
+                                <th>OptionText</th>
+                                <th>Options_Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM users";
+                            if (isset($_GET['id'])) {
+                                $option_id = $_GET['id'];
+                            $sql ="SELECT * FROM `options` where QuestionID='$option_id'";
                             $result = $conn->query($sql);
 
                             if (!$result) {
@@ -60,20 +67,19 @@
                                     // Display appointments
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr class='text-center' >";
-                                        echo "<td>" . $row['user_id'] . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['name'] . "</td>";
-                                        echo "<td>" . $row['role'] . "</td>";
-                                        echo "<td><a href= 'delete_user.php?id=" . $row['user_id'] . "' class='btn btn-danger p-2'>Delete</a> | <a href='update_user.php?id=" . $row['user_id'] . "' class='btn btn-info p-2'>Update</a></td>";
-
+                                        echo "<td>" . $row['OptionID'] . "</td>";
+                                        echo "<td>" . $row['QuestionID'] . "</td>";
+                                        echo "<td>" . $row['OptionText'] . "</td>";
+                                        echo "<td>" . $row['options_name'] . "</td>";
+                                        echo "<td><a href= 'delete_option.php?id=" . $row['OptionID'] . "' class='btn btn-danger p-2'>Delete</a> | <a href='update_option.php?id=" . $row['OptionID'] . "' class='btn btn-info p-2'>Update</a> ";
                                         echo "</tr>";
                                     }
                                 } else {
                                     // Display message if no appointments found
-                                    echo "<tr><td colspan='4'>No User found.</td></tr>";
+                                    echo "<tr><td colspan='4'>No Question found.</td></tr>";
                                 }
                             }
-
+                        }
                             ?>
                         </tbody>
                     </table>
@@ -102,9 +108,6 @@
     <!-- Magnific Popup -->
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/magnific-popup-options.js"></script>
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-    <script src="js/google_map.js"></script>
     <!-- Count Down -->
     <script src="js/simplyCountdown.js"></script>
     <!-- Main -->
